@@ -44,60 +44,28 @@ struct Test
     ~Test() = default;
 };
 
-struct G
-{
-    int x;
-    ldouble y;
-    std::vector<std::vector<ldouble>> z;
-
-};
-
 int main()
 {
-//    Test _1;
-//    _1.x = 4;
-//    _1.z.push_back(15.53);
-//    Test _2;
+    Test _1;
+    _1.x = 4;
+    _1.z.push_back(15.53);
+    Test _2;
 
-//    std::cout << "Before moving" << "\n";
-//    std::cout << _1.x << "\n";
-//    std::cout << _2.x << "\n";
+    std::cout << "Before moving" << "\n";
+    std::cout << _1.x << "\n";
+    std::cout << _2.x << "\n";
 
-//    _2 = std::move(_1);
+    _2 = std::move(_1);
 
-//    std::cout << "After moving" << "\n";
-//    std::cout << _1.x << "\n";
-//    std::cout << _2.x << "\n";
+    std::cout << "After moving" << "\n";
+    std::cout << _1.x << "\n";
+    std::cout << _2.x << "\n";
 
-//    if (_1.z.empty())
-//    {
-//        std::cout << "Old vector is empty" << "\n";
-//        std::cout << _2.z[0] << "\n";
-//    }
-
-    G g1;
-    g1.x = 6;
-    g1.y = 16.7;
-    g1.z.push_back({});
-    g1.z[0].push_back(8.4);
-
-    G g2 = g1;
-
-    std::cout << g2.x << "\n";
-    std::cout << g2.y << "\n";
-    std::cout << g2.z[0][0] << "\n";
-
-    G g3;
-    g3.x = 199;
-    g3.y = 3.1415;
-    g3.z.push_back({});
-    g3.z[0].push_back(300);
-
-    g2 = g3;
-
-    std::cout << g2.x << "\n";
-    std::cout << g2.y << "\n";
-    std::cout << g2.z[0][0] << "\n";
+    if (_1.z.empty())
+    {
+        std::cout << "Old vector is empty" << "\n";
+        std::cout << _2.z[0] << "\n";
+    }
 
     return 0;
 }
