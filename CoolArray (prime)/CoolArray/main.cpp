@@ -1,5 +1,4 @@
 #include <iostream>
-#include <iterator>
 
 struct deleting_by_value {};
 
@@ -155,7 +154,7 @@ public:
     }
 
     void splice(const prime<T>& p)
-    {        
+    {
         T tmp[size + p.get_size()];
 
         for (size_t i = 0; i < size + p.get_size(); i++)
