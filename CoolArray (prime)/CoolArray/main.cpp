@@ -1,4 +1,5 @@
 #include <iostream>
+#include <list>
 
 struct deleting_by_value {};
 
@@ -212,6 +213,23 @@ public:
     T& operator [] (size_t index) const
     {
         return arr[index];
+    }
+
+    void operator = (const prime& p)
+    {
+        delete[] arr;
+
+
+    }
+
+    std::list<T> get_list()
+    {
+        std::list<T> l;
+        for (size_t i = 0; i < size; i++)
+        {
+            l.push_back(arr[i]);
+        }
+        return l;
     }
 
     size_t get_size() const
