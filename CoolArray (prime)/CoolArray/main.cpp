@@ -215,14 +215,22 @@ public:
         return arr[index];
     }
 
-    void operator = (const prime& p)
+    prime<T>& operator = (const prime<T>& p)
     {
         delete[] arr;
 
+        size = p.get_size();
+        arr = new T[size];
 
+        for (size_t i = 0; i < size; i++)
+        {
+            arr[i] = p[i];
+        }
+
+        return *this;
     }
 
-    std::list<T> get_list()
+    std::list<T> to_list()
     {
         std::list<T> l;
         for (size_t i = 0; i < size; i++)
@@ -299,6 +307,17 @@ int main()
     std::cout << "-------------------------" << "\n";
 
     p.remove(76258, dbv);
+    for (int i = 0; i < p.get_size(); i++)
+    {
+        std::cout << p[i] << "\n";
+    }
+
+    std::cout << "-------------------------" << "\n";
+
+    prime<int> pp;
+    pp.add(123456789);
+    pp.add(987654321);
+    p = pp;
     for (int i = 0; i < p.get_size(); i++)
     {
         std::cout << p[i] << "\n";
