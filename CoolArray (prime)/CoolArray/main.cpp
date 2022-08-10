@@ -157,20 +157,31 @@ public:
         }
     }
 
-    void splice(const prime& p)
-    {
+    void splice(const prime<T>& p)
+    {        
         T tmp[size + p.get_size()];
 
         for (size_t i = 0; i < size + p.get_size(); i++)
         {
             if (i < size)
             {
-
+                tmp[i] = arr[i];
             }
             else
             {
-
+                tmp[i] = p[i - p.get_size()];
             }
+        }
+
+        delete[] arr;
+
+        size += p.get_size();
+
+        arr = new T[size];
+
+        for(size_t i = 0; i < size; i++)
+        {
+            arr[i] = tmp[i];
         }
     }
 
@@ -202,12 +213,12 @@ public:
         return true;
     }
 
-    T operator[](int index)
+    T& operator [] (size_t index) const
     {
         return arr[index];
     }
 
-    size_t get_size()
+    size_t get_size() const
     {
         return size;
     }
@@ -260,7 +271,12 @@ int main()
 
     std::cout << "-------------------------" << "\n";
 
-    p.remove(31415, dbv);
+    prime<int> p2;
+    p2.add(76258);
+    p2.add(9087401);
+    p2.add(33345666);
+
+    p.splice(p2);
     for (int i = 0; i < p.get_size(); i++)
     {
         std::cout << p[i] << "\n";
