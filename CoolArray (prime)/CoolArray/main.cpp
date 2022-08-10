@@ -71,7 +71,7 @@ public:
 
     void remove(const T& value, deleting_by_value& dbv)
     {
-        int count;
+        int count = 0;
 
         for (size_t i = 0; i < size; i++)
         {
@@ -85,15 +85,12 @@ public:
 
         T tmp[size];
         int index = 0;
-        for (size_t i = 0; i < size; i++)
+        for (size_t i = 0; i < size + count; i++)
         {
-            if (arr[i] == value)
+            if (arr[i] != value)
             {
+                tmp[index] = arr[i];
                 index++;
-            }
-            else
-            {
-                tmp[i] = arr[i + index];
             }
         }
 
@@ -277,6 +274,14 @@ int main()
     p2.add(33345666);
 
     p.splice(p2);
+    for (int i = 0; i < p.get_size(); i++)
+    {
+        std::cout << p[i] << "\n";
+    }
+
+    std::cout << "-------------------------" << "\n";
+
+    p.remove(76258, dbv);
     for (int i = 0; i < p.get_size(); i++)
     {
         std::cout << p[i] << "\n";
